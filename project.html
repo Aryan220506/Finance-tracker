@@ -102,5 +102,150 @@
   <footer>
     &copy; 2025 Income & Expense Tracker. All rights reserved.
   </footer>
+  <script>
+    // THEME SWITCHER
+    const themeCheckbox = document.getElementById('theme-checkbox');
+    const themeLabel = document.getElementById('theme-label');
+    function setTheme(mode) {
+      if(mode === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+        themeCheckbox.checked = true;
+        themeLabel.textContent = "Dark Mode";
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        themeCheckbox.checked = false;
+        themeLabel.textContent = "Light Mode";
+      }
+    }
+    // On load
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    themeCheckbox.addEventListener('change', function() {
+      const mode = this.checked ? 'dark' : 'light';
+      setTheme(mode);
+      localStorage.setItem('theme', mode);
+    });
+
+    // PIE CHART LOGIC
+    let incomeData = {};
+    let expenseData = {};
+    let incomePieChart, expensePieChart;
+
+    function initPieCharts() {
+      const incomeCtx = document.getElementById('incomePieChart').getContext('2d');
+      const expenseCtx = document.getElementById('expensePieChart').getContext('2d');
+
+      incomePieChart = new Chart(incomeCtx, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(incomeData),
+          datasets: [{
+            data: Object.values(incomeData),
+            backgroundColor: ['#00bcd4', '#2196f3', '#4caf50', '#8bc34a', '#009688', '#ffc107'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { display: true, labels: { color: getComputedStyle(document.body).color } }
+          }
+        }
+      });
+
+      expensePieChart = new Chart(expenseCtx, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(expenseData),
+          datasets: [{
+            data: Object.values(expenseData),
+            backgroundColor: ['#f44336', '#e91e63', '#ff9800', '#ff5722', '#9c27b0', '#ffeb3b'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { display: true, labels: { color: getComputedStyle(document.body).color } }
+          }
+        }
+      });
+    }
+
+    function updatePieCharts() {
+      incomePieChart.data.labels = Object.keys(incomeData);
+      incomePieChart.data.datasets[0].data = Object.values(incomeData);
+      incomePieChart.update();
+
+      expensePieChart.data.labels = Object.keys(expenseData);
+      expensePieChart.data.datasets[0].data = Object.values(expenseData);
+      expensePieChart.update();
+    }
+
+    let transactions = [];
+
+    function updateDashboard() {
+      let income = 0, expense = 0;
+      incomeData = {};
+      expenseData = {};
+
+      transactions.forEach(tx => {
+        if (tx.type === 'income') {
+          income += tx.amount;
+          incomeData[tx.description] = (incomeData[tx.description] || 0) + tx.amount;
+        } else {
+          expense += tx.amount;
+          expenseData[tx.description] = (expenseData[tx.description] || 0) + tx.amount;
+        }
+      });
+
+      document.getElementById('income-amount').textContent = '$' + income.toFixed(2);
+      document.getElementById('expense-amount').textContent = '$' + expense.toFixed(2);
+      document.getElementById('balance-amount').textContent = '$' + (income - expense).toFixed(2);
+
+      updatePieCharts();
+    }
+
+    function renderTransactions() {
+      const tbody = document.querySelector('#transaction-table tbody');
+      tbody.innerHTML = '';
+      transactions.forEach((tx, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="${tx.type}">${tx.type.charAt(0).toUpperCase() + tx.type.slice(1)}</td>
+          <td>${tx.description}</td>
+          <td>${tx.type === 'income' ? '+' : '-'}$${tx.amount.toFixed(2)}</td>
+          <td><button class="delete-btn" onclick="deleteTransaction(${idx})">Delete</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function deleteTransaction(idx) {
+      transactions.splice(idx, 1);
+      renderTransactions();
+      updateDashboard();
+    }
+
+    document.getElementById('transaction-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const type = document.getElementById('type').value;
+      const description = document.getElementById('description').value.trim();
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (!description || isNaN(amount) || amount <= 0) return;
+
+      transactions.push({ type, description, amount });
+      renderTransactions();
+      updateDashboard();
+
+      this.reset();
+    });
+
+    window.onload = function() {
+      initPieCharts();
+      renderTransactions();
+      updateDashboard();
+    };
+  </script>
 </body>
 </html>
