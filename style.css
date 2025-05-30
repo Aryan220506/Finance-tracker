@@ -301,3 +301,91 @@ table th {
     gap: 20px;
   }
 }
+/* Auth Page (Login/Signup) */
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: var(--container-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--shadow);
+  padding: 30px 20px;
+}
+
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.auth-tabs button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.auth-tabs button.active,
+.auth-tabs button:hover {
+  border-bottom: 2px solid var(--primary);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form input {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.auth-form button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-form button:hover {
+  background: #0097a7;
+}
+
+/* About Section */
+#about-section {
+  margin-bottom: 40px;
+}
+#about-section ul {
+  margin: 10px 0 10px 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--header-bg);
+  color: #aaa;
+  margin-top: 40px;
+}
+
+/* Transaction Summary Header */
+.summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
