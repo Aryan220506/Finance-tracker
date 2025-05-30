@@ -106,4 +106,162 @@ nav ul li a {
 nav ul li a:hover,
 nav ul li a[style*="color:#00bcd4"] {
   color: var(--primary);
+
+}
+
+/* Theme Switcher */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0 0 0;
+  gap: 10px;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #00bcd4;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.theme-switch-wrapper em {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--container-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--shadow);
+}
+
+/* Headings */
+h2 {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  color: var(--text);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  background: linear-gradient(145deg, var(--card-bg), var(--container-bg));
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px var(--shadow);
+}
+
+.income { color: var(--secondary); }
+.expense { color: var(--danger); }
+.balance { color: var(--info); }
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, select, button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+input, select {
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0097a7;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px;
+  border-bottom: 1px solid #bbb;
+  text-align: left;
+}
+
+table th {
+  color: var(--primary);
+}
+
+.delete-btn {
+  background: var(--danger);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
 }
