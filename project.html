@@ -27,5 +27,72 @@
         <li><a href="login-signup.html">Login/Signup</a></li>
       </ul>
     </nav>
+
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="theme-checkbox">
+        <input type="checkbox" id="theme-checkbox" />
+        <span class="slider round"></span>
+      </label>
+      <em id="theme-label">Dark Mode</em>
+    </div>
+  </header>
+
+  <div class="container" id="dashboard">
+    <h2>Dashboard</h2>
+    <div class="cards">
+      <div class="card income">
+        <h3>Income</h3>
+        <p id="income-amount">$0.00</p>
+      </div>
+      <div class="card expense">
+        <h3>Expenses</h3>
+        <p id="expense-amount">$0.00</p>
+      </div>
+      <div class="card balance">
+        <h3>Balance</h3>
+        <p id="balance-amount">$0.00</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie Chart Section -->
+  <div class="container pie-section">
+    <div class="pie-chart-container">
+      <h3>Income Distribution</h3>
+      <canvas id="incomePieChart" width="280" height="280"></canvas>
+    </div>
+    <div class="pie-chart-container">
+      <h3>Expense Distribution</h3>
+      <canvas id="expensePieChart" width="280" height="280"></canvas>
+    </div>
+  </div>
+
+  <div class="container">
+    <form id="transaction-form">
+      <h2>Add New Transaction</h2>
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <input type="text" id="description" placeholder="Description:" required>
+      <input type="number" id="amount" placeholder="Amount ($):" required>
+      <button type="submit">Add Transaction</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <div class="summary-header">
+      <h2 style="margin-bottom: 0;">Transaction Summary</h2>
+    </div>
+    <table id="transaction-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
 </body>
 </html>
