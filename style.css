@@ -36,7 +36,6 @@ body.dark-mode {
   --info: #2196f3;
   --shadow: rgba(255,255,255,0.05);
 }
-
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -45,7 +44,6 @@ body {
   color: var(--text);
   transition: background 0.3s, color 0.3s;
 }
-
 header {
   background-color: var(--header-bg);
   padding: 20px;
@@ -54,6 +52,11 @@ header {
   position: relative;
 }
 
+
+
+
+
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -61,7 +64,6 @@ header {
   justify-content: center;
   margin-bottom: 10px;
 }
-
 .logo-svg {
   width: 120px;
   height: 120px;
@@ -72,7 +74,6 @@ header {
   align-items: center;
   justify-content: center;
 }
-
 .site-title {
   font-size: 3rem;
   font-weight: 700;
@@ -83,6 +84,9 @@ header {
   align-items: center;
   gap: 20px;
 }
+
+
+
 
 nav ul {
   list-style: none;
@@ -100,11 +104,14 @@ nav ul li a {
   transition: color 0.3s;
 }
 
+
+
 nav ul li a:hover,
 nav ul li a[style*="color:#00bcd4"] {
   color: var(--primary);
 
 }
+
 
 .theme-switch-wrapper {
   display: flex;
