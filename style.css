@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-/* Color Variables */
 :root {
   --bg: #ffffff;
   --text: #232323;
@@ -47,7 +46,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Header and Logo */
 header {
   background-color: var(--header-bg);
   padding: 20px;
@@ -86,7 +84,6 @@ header {
   gap: 20px;
 }
 
-/* Navigation */
 nav ul {
   list-style: none;
   padding: 0;
@@ -109,7 +106,6 @@ nav ul li a[style*="color:#00bcd4"] {
 
 }
 
-/* Theme Switcher */
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
@@ -172,7 +168,6 @@ input:checked + .slider:before {
   font-size: 1rem;
 }
 
-/* Container */
 .container {
   max-width: 1000px;
   margin: 40px auto;
@@ -182,7 +177,6 @@ input:checked + .slider:before {
   box-shadow: 0 0 10px var(--shadow);
 }
 
-/* Headings */
 h2 {
   border-bottom: 2px solid var(--primary);
   padding-bottom: 10px;
@@ -190,7 +184,6 @@ h2 {
   color: var(--text);
 }
 
-/* Cards */
 .cards {
   display: flex;
   gap: 20px;
@@ -210,7 +203,6 @@ h2 {
 .expense { color: var(--danger); }
 .balance { color: var(--info); }
 
-/* Forms */
 form {
   display: flex;
   flex-direction: column;
@@ -240,18 +232,23 @@ button:hover {
   background: #0097a7;
 }
 
-/* Table */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
+
+
+
 table th, table td {
   padding: 12px;
   border-bottom: 1px solid #bbb;
   text-align: left;
 }
+
+
+
 
 table th {
   color: var(--primary);
